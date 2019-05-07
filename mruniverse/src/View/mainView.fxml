@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+
+<BorderPane prefWidth="1000" prefHeight="500" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+	
+	<top>
+		<VBox>
+			<children>
+				<MenuBar>
+					<menus>
+						<Menu text="학사관리">
+							<items>
+								<MenuItem text="로그아웃" fx:id="menuLogout"/>
+								<MenuItem text="종료" fx:id="menuExit"/>
+							</items>
+						</Menu>
+					
+					
+						<Menu text="도움말">
+							<items>
+								<MenuItem text="프로그램 정보" fx:id="menuInfo"/>
+							</items>
+						</Menu>
+					</menus>
+				</MenuBar>
+			</children>
+		</VBox>
+	</top>
+	
+	<center>
+		<TabPane tabClosingPolicy="UNAVAILABLE" fx:id="mainPane">
+			<tabs>
+				<Tab text="학과 등록" fx:id="subject">
+					<content>
+						<fx:include fx:id="subjectTab" source="subjectTab.fxml"/>
+					</content>
+				</Tab>
+				<Tab text="학생 등록" fx:id="student">
+					<content>
+						<fx:include fx:id="studentTab" source="studentTab.fxml"/>
+					</content>
+				</Tab>
+				<Tab text="과목 등록" fx:id="lesson">
+					<content>
+						<fx:include fx:id="lessonTab" source="lessonTab.fxml"/>
+					</content>
+				</Tab>
+				<Tab text="수강 신청 목록" fx:id="traineeTotal">
+					<content>
+						<fx:include fx:id="traineeTotalTab" source="traineeTotalTab.fxml"/>
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</center>
+	
+</BorderPane>
+

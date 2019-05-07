@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import java.lang.*?>
+<?import javafx.secne.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane prefHeight="310" prefWidth="400"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.LoginController">
+
+	<VBox alignment="CENTER">
+		<padding>
+			<Insets top="20" right="10" bottom="20" left="10" />
+		</padding>
+
+		<spacing>10</spacing>
+		<children>
+			<Label text="관리자 로그인" fx:id="lblLogin" />
+			<HBox alignment="CENTER">
+				<ImageView pickOnBounds="true" preserveRatio="ture"
+					fx:id="iconImg">
+
+					<image>
+						<Image url="@../image/zzz.png" />
+					</image>
+				</ImageView>
+			</HBox>
+
+			<Separator prefHeight="30" prefWidth="400" />
+			<HBox alignment="CENTER">
+				<Label text="아 이 디 : " />
+				<TextField fx:id="txtId" />
+
+			</HBox>
+
+			<HBox alignment="CENTER">
+				<Label text="비밀번호 : " />
+				<PasswordField fx:id="txtPassword" />
+			</HBox>
+			<HBox alignment="CENTER">
+				<spacing>10</spacing>
+				<fx:define>
+					<ToggleGroup fx:id="loginGroup" />
+				</fx:define>
+				<children>
+					<RadioButton fx:id="rbManager" userData="manager"
+						text="관리자" toggleGroup="$loginGroup" selected="true" />
+					<RadioButton fx:id="rbStudent" userData="student"
+						text="학생" toggleGroup="$loginGroup" />
+				</children>
+			</HBox>
+			<HBox alignment="CENTER">
+				<padding>
+					<Insets top="20" right="10" bottom="20" left="10" />
+				</padding>
+
+				<spacing>5</spacing>
+				<Button fx:id="btnJoin" text="관리자 등록" />
+				<Button fx:id="btnLogin" text="관리자 로그인" />
+				<Button fx:id="btnCancel" text="종료" />
+			</HBox>
+		</children>
+	</VBox>
+
+
+</AnchorPane>
+
