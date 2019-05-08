@@ -137,7 +137,7 @@ public class TraineeTotalTabController implements Initializable {
 						alert.setContentText("다시 검색하세요");
 						alert.showAndWait();
 
-						list = tDao.getTrineeTotalList();
+						list = tDao.getTraineeTotalList();
 					}
 				}
 
@@ -145,7 +145,7 @@ public class TraineeTotalTabController implements Initializable {
 					list = tDao.getTraineeSubjectSearchList(searchName);
 
 					if (list.size() == 0) { // 값이 없을 때
-						list = tDao.getTrineeTotalList();
+						list = tDao.getTraineeTotalList();
 					}
 				}
 
@@ -161,7 +161,7 @@ public class TraineeTotalTabController implements Initializable {
 						alert.setContentText("다시 검색하세요");
 						alert.showAndWait();
 
-						list = tDao.getTrineeTotalList();
+						list = tDao.getTraineeTotalList();
 					}
 				}
 

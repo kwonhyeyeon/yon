@@ -17,7 +17,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane prefWidth="1000" prefHeight="500" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+<BorderPane prefWidth="1000" prefHeight="500" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TraineeController">
 	
 	<top>
 		<VBox>
