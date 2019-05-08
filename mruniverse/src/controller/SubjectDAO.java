@@ -63,7 +63,7 @@ public class SubjectDAO {
 	// 학과 등록
 	public void getSubjectRegiste(SubjectVO svo) throws Exception {
 			
-		String sql = "insert into subject " + "(no, s_num, s_name)" + " values " + "(subject_seq.nextval, ?, ?";
+		String sql = "insert into subject " + "(no, s_num, s_name)" + " values " + "(subject_seq.nextval, ?, ?)";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
