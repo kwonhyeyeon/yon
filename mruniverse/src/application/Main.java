@@ -10,7 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/View/studentTab.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/View/traineeTotalTab.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("미래 대학교 수강신청");
 			primaryStage.setScene(scene);
