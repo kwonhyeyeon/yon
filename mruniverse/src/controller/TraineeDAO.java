@@ -3,6 +3,7 @@ package controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -227,6 +228,351 @@ public class TraineeDAO {
 			} catch (SQLException e) {
 			}
 		}
-		return list; 
+		return list;
+	}
+
+	// 수강테이블의 컬럼명을 가져오는 메소드
+	public ArrayList<String> getTraineeColumnName() throws Exception {
+
+		// ArrayList배열 생성
+		ArrayList<String> columnName = new ArrayList<String>();
+
+		// 수강테이블의 모든 정보를 가져오는 sql문
+		String sql = "select * from trainee";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		// ResultSetMetaData 객체 변수 선언
+		ResultSetMetaData rsmd = null;
+
+		try {
+			// DB연동
+			con = DBUtil.getConnection();
+			// sql문을 담을 그릇
+			pstmt = con.prepareStatement(sql);
+			// 쿼리문을 날리고 결과를 담는다
+			rs = pstmt.executeQuery();
+			// 컬럼명을 가져와서 담아준다
+			rsmd = rs.getMetaData();
+			// 컬럼의 갯수를 담아주는 변수
+			int cols = rsmd.getColumnCount();
+			// rsmd의 컬럼명을 컬럼갯수만큼 가져와서 ArrayList배열 columnName에 넣어준다.
+			for (int i = 1; i <= cols; i++) {
+				columnName.add(rsmd.getColumnName(i));
+			}
+
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				// DB연결 해제
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+			}
+		}
+		// 컬럼명배열 반환
+		return columnName;
+	}
+
+	// 수강 신청 삭제
+	public boolean getTraineeDelete(int no) throws Exception {
+		// 초기 문자열이 없고 16개의 문자를 저장할수 있는 버퍼를 가진 객체를 생성한다.
+		StringBuffer sql = new StringBuffer();
+		// 버퍼에 일련번호로 삭제하는 delete문 저장
+		sql.append("delete from trainee where no = ?");
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		// 삭제 판단 변수
+		boolean subjectDeleteSucess = false;
+
+		try {
+			// DB연동
+			con = DBUtil.getConnection();
+			// 쿼리문을 담을 그릇
+			pstmt = con.prepareStatement(sql.toString());
+			// 쿼리문에 일련번호 입력
+			pstmt.setInt(1, no);
+			// delete문이 성공적으로 입력되면 1을 반환한다.
+			int i = pstmt.executeUpdate();
+
+			if (i == 1) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("수강 신청 취소");
+				alert.setHeaderText("수강 신청 취소 완료");
+				alert.setContentText("수고링~");
+				alert.showAndWait();
+				// 삭제 판단변수 true
+				subjectDeleteSucess = true;
+			} else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("수강 신청 취소");
+				alert.setHeaderText("수강 신청 취소 실패");
+				alert.setContentText("수고링~");
+				alert.showAndWait();
+			}
+
+		} catch (SQLException e) {
+			System.out.println("e = [ " + e + " ]");
+		} catch (Exception e) {
+			System.out.println("e = [ " + e + " ]");
+		} finally {
+			try {
+				// DB연결 해제
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+			}
+		}
+		// 삭제 판단 변수 boolean값 반환
+		return subjectDeleteSucess;
+	}
+
+	// 수강신청 전체 목록
+	public ArrayList<TraineeVO> getTraineeTotalList() throws Exception {
+		// ArrayList 배열 생성
+		ArrayList<TraineeVO> list = new ArrayList<>();
+		// 3개의 테이블에서 정보를 가져오는 SQL문
+		String sql = "select tr.no as no, tr.sd_num as l_num, st.sd_name as sd_name, t_section, t_date "
+				+ "from trainee tr, lesson le, student st "
+				+ "where tr.l_num = le.l_num and tr.sd_num = st.sd_num order by t_date";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 인스턴스 선언
+		TraineeVO tVo = null;
+
+		try {
+			// DB연동
+			con = DBUtil.getConnection();
+			// sql문을 담을 그릇..
+			pstmt = con.prepareStatement(sql);
+			// sql문을 날리고 결과를 저장한다.
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 인스턴스 생성
+				tVo = new TraineeVO();
+				// 쿼리문을 날리고 얻은 결과에서 값을 가져와 객체의 필드값을 설정한다.
+				tVo.setNo(rs.getInt("no"));
+				tVo.setSd_num(rs.getString("sd_num"));
+				tVo.setSd_name(rs.getString("sd_name"));
+				tVo.setL_num(rs.getString("l_num"));
+				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_date(rs.getString("t_date"));
+
+				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
+				list.add(tVo);
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				// DB연결 해제
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+			}
+		}
+		// TraineeVO객체배열 반환
+		return list;
+	}
+
+	// 전체 수강탭에서 학번 검색
+	public ArrayList<TraineeVO> getTraineeStudentNumSearchList(String sd_num) throws Exception {
+		// ArrayList배열 생성
+		ArrayList<TraineeVO> list = new ArrayList<>();
+		// 학번으로 3개의 테이블에서 데이터를 가져오는 sql문
+		String sql = "select tr.no as no, tr.sd_num, le.l_name as l_num, st.sd_name as sd_name, t_section, "
+				+ "t_date from trainee tr, lesson le, student st where tr.l_num = le.l_num and tr.sd_num = "
+				+ "st.sd_num and tr.sd_num = ? order by t_date";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 인스턴스 생성
+		TraineeVO tVo = null;
+
+		try {
+			// DB연동
+			con = DBUtil.getConnection();
+			// sql문을 담을 그릇
+			pstmt = con.prepareStatement(sql);
+			// 학번입력
+			pstmt.setString(1, sd_num);
+			// sql문을 날리고 결과를 저장
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 인스턴스 생성
+				tVo = new TraineeVO();
+				// 쿼리문을 날리고 얻은 결과에서 값을 가져와 객체의 필드값을 설정한다.
+				tVo.setNo(rs.getInt("no"));
+				tVo.setSd_num(rs.getString("sd_num"));
+				tVo.setSd_name(rs.getString("sd_name"));
+				tVo.setL_num(rs.getString("l_num"));
+				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_date(rs.getString("t_date"));
+
+				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
+				list.add(tVo);
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				// DB연결 해제
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+			}
+		}
+		// TraineeVO객체배열 반환
+		return list;
+	}
+
+	// 전체 수강 탭에서 과목 검색
+	public ArrayList<TraineeVO> getTraineeSubjectSearchList(String l_name) throws Exception {
+		// 뭥미
+		String l_num = getLessonNum(l_name);
+		// 배열 생성
+		ArrayList<TraineeVO> list = new ArrayList<>();
+		// 과목으로 3개의 테이블에서 데이터를 가져오는 SQL문
+		String sql = "select tr.no as no, tr.sd_num, le.l_name as l_num, st.sd_name as sd_name, t_section, t_date "
+				+ "from trainee tr, lesson le, student st "
+				+ "where tr.l_num = le.l_num and tr.l_num = ? and tr.sd_num = st.sd_num " + "order by t_date";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 인스턴스 생성
+		TraineeVO tVo = null;
+		try {
+			// DB연동
+			con = DBUtil.getConnection();
+			// sql문을 담을 그릇
+			pstmt = con.prepareStatement(sql);
+			// 과목입력
+			pstmt.setString(1, l_num);
+			// sql문을 날리고 결과를 저장
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 인스턴스 생성
+				tVo = new TraineeVO();
+				// 쿼리문을 날리고 얻은 결과에서 값을 가져와 객체의 필드값을 설정한다.
+				tVo.setNo(rs.getInt("no"));
+				tVo.setSd_num(rs.getString("sd_num"));
+				tVo.setSd_name(rs.getString("sd_name"));
+				tVo.setL_num(rs.getString("l_num"));
+				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_date(rs.getString("t_date"));
+
+				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
+				list.add(tVo);
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				// DB연결 해제
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+			}
+		}
+		// TraineeVO객체배열 반환
+		return list;
+	}
+
+	// 전체 수강 탭에서 학생이름 검색
+	public ArrayList<TraineeVO> getTraineeStudentNameSearchList(String sd_name) throws Exception {
+		// 배열생성
+		ArrayList<TraineeVO> list = new ArrayList<>();
+		// 학생이름으로 3개의 테이블에서 데이터를 가져오는 sql문
+		String sql = "select tr.no as no, tr.sd_num, le.l_name as l_num, st.sd_name as sd_name, t_section, t_date "
+				+ "from trainee tr, lesson le, student st "
+				+ "where tr.l_num = le.l_num and tr.sd_num = st.sd_num and st.sd_name = ? " + "order by t_date";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 인스턴스 생성
+		TraineeVO tVo = null;
+		try {
+			// DB연동
+			con = DBUtil.getConnection();
+			// sql문을 담을 그릇
+			pstmt = con.prepareStatement(sql);
+			// 과목입력
+			pstmt.setString(1, sd_name);
+			// sql문을 날리고 결과를 저장
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// 인스턴스 생성
+				tVo = new TraineeVO();
+				// 쿼리문을 날리고 얻은 결과에서 값을 가져와 객체의 필드값을 설정한다.
+				tVo.setNo(rs.getInt("no"));
+				tVo.setSd_num(rs.getString("sd_num"));
+				tVo.setSd_name(rs.getString("sd_name"));
+				tVo.setL_num(rs.getString("l_num"));
+				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_date(rs.getString("t_date"));
+
+				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
+				list.add(tVo);
+			}
+		} catch (SQLException se) {
+			System.out.println(se);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				// DB연결 해제
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+			}
+		}
+		// TraineeVO객체배열 반환
+		return list;
 	}
 }
