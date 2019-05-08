@@ -227,6 +227,6 @@ public class TraineeDAO {
 			} catch (SQLException e) {
 			}
 		}
-		return list;
+		return list; 
 	}
 }
