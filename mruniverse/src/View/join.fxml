@@ -7,10 +7,12 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane prefHeight="310.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.JoinController">
-
+<AnchorPane prefHeight="310.0" prefWidth="400.0"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.JoinController">
 	<VBox alignment="CENTER">
 		<padding>
 			<Insets top="20" right="10" bottom="20" left="10" />
@@ -19,17 +21,27 @@
 		<children>
 			<Label text="관리자 등록" />
 			<Separator prefHeight="30" prefWidth="400" />
+
 			<HBox alignment="CENTER">
-				<padding>
-					<Insets top="5" right="10" bottom="5" left="30" />
-				</padding>
 				<Label text="아 이 디 : " />
 				<TextField fx:id="txtId" />
 			</HBox>
+
+			<HBox alignment="CENTER">
+				<Label text="비밀번호 : " />
+				<PasswordField fx:id="txtPassword" />
+			</HBox>
+
+			<HBox alignment="CENTER">
+				<Label text="비밀번호 확인 : " />
+				<PasswordField fx:id="txtPasswordRepeat" />
+			</HBox>
+
 			<HBox alignment="CENTER">
 				<Label text="관리자 이름 : " />
 				<TextField fx:id="txtName" />
 			</HBox>
+
 			<HBox alignment="CENTER">
 				<padding>
 					<Insets top="20" right="10" bottom="20" left="10" />
@@ -39,7 +51,7 @@
 				<Button fx:id="btnJoin" text="등록" />
 				<Button fx:id="btnCancel" text="닫기" />
 			</HBox>
+
 		</children>
 	</VBox>
-
 </AnchorPane>
