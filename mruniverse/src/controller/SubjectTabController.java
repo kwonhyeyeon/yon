@@ -21,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import model.SubjectVO;
 
 public class SubjectTabController implements Initializable {
@@ -45,7 +46,7 @@ public class SubjectTabController implements Initializable {
 	private TableView<SubjectVO> subjectTableView = new TableView<>(); // 학과 목록 테이블
 	
 	public static ObservableList<SubjectVO> subjectDataList = FXCollections.observableArrayList();
-	ObservableList<SubjectVO> selectSubjectVOs = null; // 테이블에서 선택한 정보 저장
+	ObservableList<SubjectVO> selectSubject = null; // 테이블에서 선택한 정보 저장
 	int selectedIndex; // 테이블에서 선택한 학과 정보 인덱스 저장
 
 	public void subjectTotalList() {
@@ -90,13 +91,72 @@ public class SubjectTabController implements Initializable {
 			// 학과 번호 텍스트필드 키 이벤트 핸들러
 			txtSubjectNum.setOnKeyPressed(event -> handlerTxtSubjectNoKeyPressed(event));
 			
-			// 학과 등록, 수정, 삭제 이벤트 등록
+			// 학과 등록, 수정, 삭제 이벤트 핸들러
 			btnInsert.setOnAction(event -> handlerBtnInsertAction(event));
 			btnDelete.setOnAction(event -> handlerBtnDeleteAction(event));
 			btnUpdate.setOnAction(event -> handlerBtnUpdateAction(event));
 			
+			// 학과 테이블뷰 더블클릭 선택 이벤트 핸들러
+			subjectTableView.setOnMouseClicked(event -> handlerSubjectTableViewAction(event));
+			
+			// 테이블 뷰 읽기 버튼 이벤트 핸들러
+			btnRead.setOnAction(event -> handlerBtnReadAction(event));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+	}
+
+	// 테이블 뷰 읽기 버튼 이벤트 핸들러
+	public void handlerBtnReadAction(ActionEvent event) {
+		
+		try {
+			
+			int count = subjectTableView.getItems().size(); // 테이블 뷰 아이템의 사이즈(갯수)를 count에 저장
+			System.out.println("count : " + count);
+			
+			for(int i = 0; i < count; i++) {
+				selectSubject = subjectTableView.getItems(); // 테이블에서 선택한 아이템
+				int index = selectSubject.get(i).getNo(); // 학과 일련번호
+				String selectedS_num = selectSubject.get(i).getS_num(); // 학과 번호
+				String selectedS_name = selectSubject.get(i).getS_name();
+				
+				System.out.print(index + " ");
+				System.out.print(selectedS_num + " ");
+				System.out.print(selectedS_name + " ");
+						
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	// 학과 테이블뷰 더블클릭 선택 이벤트 핸들러 메소드
+	public void handlerSubjectTableViewAction(MouseEvent event) {
+		
+		if(event.getClickCount() == 2) { // 더블클릭시
+			try {
+				
+				// 테이블에서 선택한 정보를 selectSubject에 저장
+				selectSubject = subjectTableView.getSelectionModel().getSelectedItems();
+				selectedIndex = selectSubject.get(0).getNo();
+				String selectedS_num = selectSubject.get(0).getS_num();
+				String selectedS_name = selectSubject.get(0).getS_name();
+				
+				txtSubjectNum.setText(selectedS_num); // 선택된 학과번호를 학과번호 텍스트 필드에 설정
+				txtSubjectName.setText(selectedS_name); // 선택된 학과명을 학과명 텍스트 필드에 설정
+				
+				btnUpdate.setDisable(false); // 수정 버튼 활성화
+				btnDelete.setDisable(false); // 삭제 버튼 활성화
+				btnInsert.setDisable(true); // 등록 버튼 비활성화
+ 				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
