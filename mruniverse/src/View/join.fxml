@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +11,7 @@
 
 <AnchorPane prefHeight="310.0" prefWidth="400.0"
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="control.JoinController">
+	fx:controller="controller.JoinController">
 
 	<VBox alignment="CENTER">
 		<padding>
