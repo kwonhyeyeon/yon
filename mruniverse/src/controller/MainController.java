@@ -79,7 +79,7 @@ public class MainController implements Initializable {
 					} else if (newValue == lesson) { // 과목 등록 탭일 경우
 						try {
 							// 과목 등록 탭 컨트롤러의 lessonTotalList 메소드 호출
-							lessonTabController.lessonTotalList();
+							// lessonTabController.lessonTotalList();
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
