@@ -137,26 +137,45 @@ public class LoginController implements Initializable {
 					txtPassword.clear();
 				}
 				// 선택된 토글버튼이 학생일경우
-			} /*
-				 * 아직 안만듬 else if
-				 * ("student".equals(loginGroup.getSelectedToggle().getUserData().toString())) {
-				 * // StudentDAO에서 getLogin메소드 호출 sucess =
-				 * sLogin.getLogin(txtId.getText().trim(), txtPassword.getText().trim()); // 로그인
-				 * 성공시 메인 페이지로 이동 if (sucess) { try { // 입력받은 아이디를 학생아이디 변수에 넣어준다. studentId =
-				 * txtId.getText(); // 수강뷰를 불러온다 FXMLLoader loader = new
-				 * FXMLLoader(getClass().getResource("/view/trainee.fxml")); // 부모창을 login.fxml로
-				 * 로드 Parent mainView = (Parent) loader.load(); // Scene 객체 생성 Scene scane = new
-				 * Scene(mainView); // Stage 객체 생성 Stage mainMtage = new Stage(); // 타이틀 설정
-				 * mainMtage.setTitle("미래 대학교 학사관리"); // 사이즈 재설정 불가
-				 * mainMtage.setResizable(false); // 씬설정 mainMtage.setScene(scane); // 그전에 있던창
-				 * oldStage로 저장 Stage oldStage = (Stage) btnLogin.getScene().getWindow(); // 그전에
-				 * 있던 창을 닫음 oldStage.close(); // 등록창 열기 mainMtage.show(); } catch (IOException
-				 * e) { System.out.println("오류 " + e); } } else { // 로그인 실패시 // 경고창 Alert alert;
-				 * alert = new Alert(AlertType.WARNING); alert.setTitle("로그인 실패");
-				 * alert.setHeaderText("아이디와 비밀번호 불일치"); alert.setContentText("수고링~"); // 경고창
-				 * 크기설정 불가 alert.setResizable(false); // 경고창을 보여주고 기다린다 alert.showAndWait(); //
-				 * 입력한 아이디와 비밀번호를 지워준다 txtId.clear(); txtPassword.clear(); } }
-				 */
+			} else if ("student".equals(loginGroup.getSelectedToggle().getUserData().toString())) {
+				// StudentDAO에서 getLogin메소드 호출
+				sucess = sLogin.getLogin(txtId.getText().trim(), txtPassword.getText().trim()); // 로그인성공시 메인 페이지로 이동
+				if (sucess) {
+					try {
+						// 입력받은 아이디를 학생아이디 변수에 넣어준다.
+						studentId = txtId.getText(); // 수강뷰를 불러온다
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/trainee.fxml")); // 부모창을
+																											// login.fxml로
+																											// 로드
+						Parent mainView = (Parent) loader.load(); // Scene 객체 생성
+						Scene scane = new Scene(mainView); // Stage 객체 생성
+						Stage mainMtage = new Stage(); // 타이틀 설정
+						mainMtage.setTitle("미래 대학교 학사관리"); // 사이즈 재설정 불가
+						mainMtage.setResizable(false); // 씬설정
+						mainMtage.setScene(scane); // 그전에 있던창oldStage로 저장
+						Stage oldStage = (Stage) btnLogin.getScene().getWindow(); // 그전에있던 창을 닫음
+						oldStage.close(); // 등록창 열기
+						mainMtage.show();
+					} catch (IOException e) {
+						System.out.println("오류 " + e);
+					}
+				}
+
+				else { // 로그인 실패시
+						// 경고창
+
+					Alert alert;
+					alert = new Alert(AlertType.WARNING);
+					alert.setTitle("로그인 실패");
+					alert.setHeaderText("아이디와 비밀번호 불일치");
+					alert.setContentText("수고링~"); // 경고창크기설정 불가
+					alert.setResizable(false); // 경고창을 보여주고 기다린다
+					alert.showAndWait();
+					// 입력한 아이디와 비밀번호를 지워준다
+					txtId.clear();
+					txtPassword.clear();
+				}
+			}
 
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -206,7 +225,7 @@ public class LoginController implements Initializable {
 	public void handerBtnJoinAction(ActionEvent event) {
 		try {
 			// 관리자 등록창을 불러온다.
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/join.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/join.fxml"));
 			// 부모창을 login.fxml로 로드
 			Parent mainView = (Parent) loader.load();
 			// Scene 객체 생성
@@ -272,11 +291,19 @@ public class LoginController implements Initializable {
 		btnJoin.setDisable(true); // 등록버튼 비활성화
 		btnLogin.setText("학생 로그인"); // 버튼에 "학생 로그인"을 넣는다
 	}
-	/*
-	 * // 아직 안만듬 // 학생 이름을 가져오는 메소드 public String studentLoginName() { // StudentDAO
-	 * 인스턴스화 StudentDAO sdao = new StudentDAO(); String name = null;
-	 * 
-	 * try { name = sdao.getLoginName(txtId.getText()); }catch(Exception e) {
-	 * e.printStackTrace(); } return name; }
-	 */
+
+	// 학생 이름을 가져오는 메소드
+	public String studentLoginName() {
+		// StudentDAO 인스턴스화
+		StudentDAO sdao = new StudentDAO();
+		String name = null;
+
+		try {
+			name = sdao.getLoginName(txtId.getText());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return name;
+	}
+
 }
