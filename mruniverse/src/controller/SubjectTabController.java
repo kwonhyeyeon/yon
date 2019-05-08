@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.security.auth.login.LoginContext;
@@ -48,11 +49,6 @@ public class SubjectTabController implements Initializable {
 	public static ObservableList<SubjectVO> subjectDataList = FXCollections.observableArrayList();
 	ObservableList<SubjectVO> selectSubject = null; // 테이블에서 선택한 정보 저장
 	int selectedIndex; // 테이블에서 선택한 학과 정보 인덱스 저장
-
-	public void subjectTotalList() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -104,6 +100,29 @@ public class SubjectTabController implements Initializable {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+	}
+	
+	// 학과 전체 리스트
+	public void subjectTotalList() throws Exception {
+		
+		subjectDataList.removeAll(subjectDataList);
+		
+		SubjectDAO sDao = new SubjectDAO();
+		SubjectVO sVo = null;
+		ArrayList<String> title;
+		ArrayList<SubjectVO> list;
+		
+		title = sDao.getSubjectColumnName();
+		int columnCount = title.size();
+		
+		list = sDao.getSubjectTotalList();
+		int rowCount = list.size();
+		
+		for(int index = 0; index < rowCount; index++) {
+			sVo = list.get(index);
+			subjectDataList.add(sVo);
 		}
 		
 	}

@@ -1,8 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableView?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</VBox>
+<HBox prefWidth="1000" prefHeight="500" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentTabController">
+	<padding>
+		<Insets top="10" right="10" bottom="10" left="10"/>
+	</padding>
+	
+	<VBox prefWidth="300">
+		<Label text="학생 등록"/>
+		
+		<HBox>
+			<padding>
+				<Insets top="20" bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="학과명"/>
+			<ComboBox fx:id="cbx_subjectName" promptText="선택"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="학 번"/>
+			<TextField fx:id="txtsd_num"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="이 름"/>
+			<TextField fx:id="txtsd_name"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="70" text="아이디"/>
+			<TextField fx:id="txtsd_id"/>
+			<spacing>10</spacing>
+			<Button fx:id="btnIdCheck" text="ID 체크"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="비밀번호"/>
+			<PasswordField fx:id="txtsd_passwd"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="생년월일"/>
+			<TextField fx:id="txtsd_birthday" promptText="20010101"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="연락처"/>
+			<TextField fx:id="txtsd_phone" promptText="01012345678"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<Label prefWidth="80" text="주 소"/>
+			<TextField fx:id="txtsd_address"/>
+		</HBox>
+		
+		<HBox>
+			<padding>
+				<Insets bottom="20"/>
+			</padding>
+			<Label prefWidth="80" text="이메일"/>
+			<TextField fx:id="txtsd_email"/>
+		</HBox>
+		
+		<HBox alignment="CENTER">
+			<spacing>10</spacing>
+			<Button fx:id="btnStudentInsert" text="학생 등록"/>
+			<Button fx:id="btnStudentUpdate" text="학생정보수정"/>
+			<Button fx:id="btnStudentInit" text="취소"/>
+		</HBox>
+	</VBox>
+	
+	<VBox>
+		<HBox>
+			<padding>
+				<Insets bottom="10"/>
+			</padding>
+			<spacing>10</spacing>
+			<Label text="학생 목록"/>
+			<Button fx:id="btnStudentTotalList" text="학생 전체"/>
+		</HBox>
+		
+		<TableView fx:id="studentTableView" prefWidth="700" prefHeight="460"></TableView>
+		
+	</VBox>
+	
+</HBox>
 
