@@ -206,16 +206,15 @@ public class TraineeTotalTabController implements Initializable {
 		ArrayList<String> title;
 		ArrayList<TraineeVO> list;
 		
-		title = tDao.getTraineeColumnName();
-		int columnCount = title.size();
+		title = tDao.getTraineeTotalList();
 		
-		list = tDao.getTraineeTotalList();
 		int rowCount = list.size();
 		
-		lblCount.setText("수강 신청/t/t/t총원 : " + rowCount + " 명");
+		lblCount.setText("총원 : " + rowCount + " 명");
 		for(int index = 0; index < rowCount; index++) {
 			tVo = list.get(index);
 			traineeDataList.add(tVo);
+			
 		}
 		
 
