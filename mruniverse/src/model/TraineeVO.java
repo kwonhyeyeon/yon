@@ -32,10 +32,9 @@ public class TraineeVO {
 	}
 
 	// 일련번호를 제외한 생성자
-	public TraineeVO(String sd_num, String sd_name, String l_num, String t_section, String t_date) {
+	public TraineeVO(String sd_num, String l_num, String t_section, String t_date) {
 		super();
 		this.sd_num = sd_num;
-		this.sd_name = sd_name;
 		this.l_num = l_num;
 		this.t_section = t_section;
 		this.t_date = t_date;

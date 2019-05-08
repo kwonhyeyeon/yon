@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.StudentVO;
+
 public class TraineeDAO {
 	// 로그인한 학생의 정보
 	public StudentVO getStudentSubjectName(String sd_id) throws Exception{
@@ -30,7 +32,8 @@ public class TraineeDAO {
 			if(rs.next()) {
 				// 인스턴스 생성
 				studentInfo = new StudentVO();
-				
+				studentInfo.setSd_num(rs.getString("sd_num"));
+				studentInfo
 				
 			}
 			
