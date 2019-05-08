@@ -157,7 +157,7 @@ public class StudentTabController implements Initializable {
 			btnStudentUpdate.setOnAction(event -> handlerBtnStudentUpdateAction(event));
 			// 초기화 버튼 이벤트 핸들러
 			btnStudentInit.setOnAction(event -> handlerBtnStudentInitAction(event));
-			//
+			// 학생 전체 목록 버튼 이벤트 핸들러
 			btnStudentTotalList.setOnAction(event -> handlderBtnStudentTotalListAction(event));
 			
 		} catch (Exception e) {
