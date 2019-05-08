@@ -26,7 +26,7 @@
 		<ComboBox fx:id="cbx_searchList" promptText="검색 분류 선택"/>
 		<TextField fx:id="txtSearchWord" promptText="검색어"/>
 		<Button fx:id="btnSearch" text="검색"/>
-		<Label fx:id="lblCount" prefHeight="19" alignment="BOTTOM_CENTER" text="수강 신청(수정)"/>
+		<Label fx:id="lblCount" prefHeight="19" alignment="BOTTOM_CENTER"/>
 	</HBox>
 	
 	<TableView fx:id="traineeTotalTableView" prefWidth="600" prefHeight="450"/>
