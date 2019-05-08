@@ -9,9 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane prefHeight="310.0" prefWidth="400.0"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controller.JoinController">
+<AnchorPane prefHeight="310.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.JoinController">
 
 	<VBox alignment="CENTER">
 		<padding>
@@ -43,7 +41,5 @@
 			</HBox>
 		</children>
 	</VBox>
-
-
 
 </AnchorPane>
