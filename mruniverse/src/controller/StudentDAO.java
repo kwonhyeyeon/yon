@@ -70,6 +70,7 @@ public class StudentDAO {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, loginId);
+			pstmt.setString(2, loginPassword);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -105,7 +106,7 @@ public class StudentDAO {
 		ArrayList<StudentVO> list = new ArrayList<>();
 
 		String sql = "select st.no as no, sd_num, sd_name, sd_id, sd_passwd, su.s_name as s_num, sd_birthday, sd_phone, sd_address, sd_email, sd_date "
-				+ " from SUTDENT st, SUBJECT su" + " where st.s_num = su.s_num" + " order by no";
+				+ " from STUDENT st, SUBJECT su" + " where st.s_num = su.s_num" + " order by no";
 
 		Connection con = null;
 		PreparedStatement pstmt = null;

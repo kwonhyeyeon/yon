@@ -93,7 +93,7 @@ public class LessonTabController implements Initializable {
 
 			try {
 				// 선택된 과목 = 테이블뷰에서 선택된 모델의 선택된 아이템
-				selectLesson = (ObservableList<LessonVO>) lessonTableView.getSelectionModel().getSelectedItem();
+				selectLesson = lessonTableView.getSelectionModel().getSelectedItems();
 
 				selectedLessonIndex = selectLesson.get(0).getNo();
 				String selectedL_num = selectLesson.get(0).getL_num();

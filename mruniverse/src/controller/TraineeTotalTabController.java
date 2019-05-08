@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -8,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -99,12 +102,49 @@ public class TraineeTotalTabController implements Initializable {
 		
 		try {
 			
-			if() {
+			// 검색어 필드 값이 공백이거나 콤보박스에서 아무것도 선택하지 않았을 때
+			if(searchName.equals("") || search.equals("")) {
+				try {
+					searchResult = true;
+					
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("수강 정보 검색");
+					alert.setHeaderText("수강 검색 정보를 입력하세요");
+					alert.setContentText("다음에는 주의하세요");
+					alert.showAndWait();
+					
+					traineeTotalList(); // 수강 전체 목록 메소드 호출
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
 				
-			}
+				ArrayList<String> title;
+				ArrayList<TraineeVO> list = null;
+				
+				title = tDao.getTraineeColumnName();
+				int columnCount = title.size();
+				
+				if(search.equals("학번")) { // 콤보박스에서 학번을 선택했을 때
+					list = tDao.getTraineeStudentNumSearchList(searchName);
+					
+					if(list.size() == 0) { // 값이 없을 때
+						txtSearchWord.clear(); // 검색어 필드 초기화
+						
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("학생 학번 정보 검색");
+						alert.setHeaderText(searchName + " 학번의 수강 리스트에 없습니다");
+						alert.setContentText("다시 검색하세요");
+						alert.showAndWait();
+						
+						list = tDao.getTrineeTotalList();
+					}
+				}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+			
 		}
 		
 	}
