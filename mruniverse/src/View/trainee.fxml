@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1000" prefHeight="500" xmlns:fx="http://javafx.com/fxml/1">
+	
+	<top>
+		<VBox>
+			<MenuBar>
+				<menus>
+					<Menu text="학사관리">
+						<items>
+							<MenuItem text="로그아웃" fx:id="menuLogout"></MenuItem>
+							<MenuItem text="종료" fx:id="menuExit"></MenuItem>
+						</items>
+					</Menu>
+					<Menu text="도움말">
+						<items>
+							<MenuItem text="프로그램 정보" fx:id="menuInfo"></MenuItem>
+						</items>
+					</Menu>
+				</menus>
+			</MenuBar>
+		</VBox>
+	</top>
+	
+	<center>
+		<TabPane tabClosingPolicy="UNAVAILABLE">
+			<tabs>
+				<Tab text="수강 신청">
+					<content>
+						
+						<HBox prefWidth="1000" prefHeight="500">
+							<padding>
+								<Insets top="10" right="10" bottom="10" left="10"/>
+							</padding>
+							
+							<VBox prefWidth="300">
+								<HBox>
+									<padding>
+										<Insets bottom="20"/>
+									</padding>
+									<Label text="수강 신청"/>
+								</HBox>
+								
+								<HBox>
+									<padding>
+										<Insets bottom="10"/>
+									</padding>
+									<Label prefWidth="100" text="학생 이름"/>
+									<TextField fx:id="txtStudentName"/>
+								</HBox>
+								<HBox>
+									<padding>
+										<Insets bottom="10"/>
+									</padding>
+									<Label prefWidth="100" text="학   번"/>
+									<TextField fx:id="txtStudentNum"/>
+								</HBox>
+								<HBox>
+									<padding>
+										<Insets bottom="20"/>
+									</padding>
+									<Label prefWidth="100" text="학 과 명"/>
+									<TextField fx:id="txtSubjectName"/>
+								</HBox>
+								
+								<HBox>
+									<padding>
+										<Insets bottom="10"/>
+									</padding>
+									<Label text="수강 과목 선택"/>
+								</HBox>
+								<HBox>
+									<padding>
+										<Insets bottom="10"/>
+									</padding>
+									<spacing>10</spacing>
+									<fx:define>
+										<ToggleGroup fx:id="sectionGroup"/>
+									</fx:define>
+									<RadioButton fx:id="rbMajor" userData="major" text="전공" toggleGroup="$sectionGroup"/>
+									<RadioButton fx:id="rbMinor" userData="minor" text="부전공" toggleGroup="$sectionGroup"/>
+									<RadioButton fx:id="rbCulture" userData="culture" text="교양" toggleGroup="$sectionGroup"/>
+								</HBox>
+								
+								<HBox>
+									<padding>
+										<Insets bottom="30"/>
+									</padding>
+									<spacing>10</spacing>
+									<ComboBox  prefWidth="90" fx:id="cbx_subjectName" promptText="선택"/>
+									<TextField fx:id="txtSectionName" promptText="수강 과목 선택"/>
+								</HBox>
+								
+								<HBox alignment="CENTER">
+									<spacing>10</spacing>
+									<Button fx:id="btnTraineeInsert" text="수강 신청"/>
+									<Button fx:id="btnTraineeCancle" text="수강 취소"/>
+									<Button fx:id="btnTraineeExit" text="수강 종료"/>
+								</HBox>
+							</VBox>
+							
+							<VBox prefWidth="700">
+								<HBox>
+									<padding>
+										<Insets bottom="20"/>
+									</padding>
+									<Label text="수강 신청 목록"/>
+								</HBox>
+								
+								<TableView fx:id="traineeTableView" prefWidth="700" prefHeight="430"/>
+							</VBox>
+						</HBox>
+						
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</center>
+	
+</BorderPane>
+
