@@ -119,7 +119,6 @@ public class LessonDAO {
 
 		// 컬럼명배열 생성
 		ArrayList<String> columnName = new ArrayList<String>();
-
 		// lesson테이블의 정보를 모두 가져오는 sql문
 		String sql = "select * from lesson";
 		Connection con = null;
@@ -128,7 +127,6 @@ public class LessonDAO {
 		// ResultSetMetaData 객체 변수 선언
 		// 컬럼명, 갯수를 가져오기 위한
 		ResultSetMetaData rsmd = null;
-
 		try {
 			// DB연동
 			con = DBUtil.getConnection();
@@ -136,8 +134,10 @@ public class LessonDAO {
 			pstmt = con.prepareStatement(sql);
 			// sql문을 날린후 결과 저장
 			rs = pstmt.executeQuery();
+			rsmd = rs.getMetaData();
 			// 컬럼의 갯수
 			int cols = rsmd.getColumnCount();
+
 			// 컬럼의 갯수만큼 컬럼명 배열에 넣어준다.
 			for (int i = 1; i <= cols; i++) {
 				columnName.add(rsmd.getColumnName(i));

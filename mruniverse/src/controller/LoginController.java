@@ -97,15 +97,20 @@ public class LoginController implements Initializable {
 				if (sucess) {
 					// 로그인 성공여부가 true일 경우
 					try {
+						System.out.println("a");
 						// 메인뷰를 불러온다
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mainView.fxml"));
 						// 부모창을 login.fxml로 로드
-						Parent mainView = (Parent) loader.load();
+						System.out.println("e");
+						Parent mView = (Parent) loader.load();
+						System.out.println(mView);
 						// Scene 객체 생성
-						Scene scane = new Scene(mainView);
+						System.out.println("d");
+						Scene scane = new Scene(mView);
 						// Stage 객체 생성
 						Stage mainMtage = new Stage();
 						// 타이틀 설정
+						System.out.println("c");
 						mainMtage.setTitle("미래 대학교 학사관리");
 						// 사이즈 재설정 불가
 						mainMtage.setResizable(false);
@@ -117,6 +122,7 @@ public class LoginController implements Initializable {
 						oldStage.close();
 						// 등록창 열기
 						mainMtage.show();
+						System.out.println("b");
 					} catch (IOException e) {
 						System.out.println("오류 : " + e);
 					}

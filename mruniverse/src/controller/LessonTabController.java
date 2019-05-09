@@ -45,6 +45,7 @@ public class LessonTabController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		try {
+			System.out.println("aa");
 			// 과목등록 초기화
 			btnLessonUpdate.setDisable(true); // 과목 수정버튼 비활성화
 			btnLessonDelete.setDisable(true); // 과목 삭제버튼 비활성화
@@ -68,10 +69,12 @@ public class LessonTabController implements Initializable {
 			lessonTableView.setItems(lessonDataList);
 			// 과목테이블뷰에 모든 데이터를 추가한다.
 			lessonTableView.getColumns().addAll(colLessonNo, colLessonNum, colLessonName);
+			
+			System.out.println("cc");
 
 			// 과목 전체 목록
 			lessonTotalList();
-
+			System.out.println("bb");
 			// 과목 등록 텍스트 필드키 이벤트 핸들러
 			txtLessonNum.setOnKeyPressed(event -> handlerTxtLessonNumKeyPressed(event));
 			// 과목 등록, 수정, 삭제 이벤트 등록
@@ -148,25 +151,22 @@ public class LessonTabController implements Initializable {
 
 	// 과목 전체 목록
 	public void lessonTotalList() throws Exception {
+		System.out.println("zz");
 		// 삭제후 반환한다
 		lessonDataList.removeAll(lessonDataList);
 		// LessonDAO객체 인스턴스화
 		LessonDAO lDao = new LessonDAO();
 		// 객체 인스턴스 선언
 		LessonVO lVo = null;
-
 		// 배열생성
-		ArrayList<String> title;
-		ArrayList<LessonVO> list;
-
+		ArrayList<String> title = null;
+		ArrayList<LessonVO> list = null;
 		title = lDao.getLessonColumnName();
 		// 컬럼갯수
 		int columnCount = title.size();
-
 		list = lDao.getLessonTotalList();
 		// 행의 갯수
 		int rowCount = list.size();
-
 		// 행의 갯수만큼 반복하여 lessonDataList배열에 객체를 추가시킨다.
 		for (int index = 0; index < rowCount; index++) {
 			lVo = list.get(index);
