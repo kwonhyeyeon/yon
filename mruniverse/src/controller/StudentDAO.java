@@ -350,7 +350,7 @@ public class StudentDAO {
 	// 학생 정보 수정
 	public boolean getStudentUpdate(int no, String sd_passwd, String sd_birthday, String sd_phone, String sd_address, String sd_email) throws Exception {
 		
-		String sql = "update student set sd_passwd = ?, sd_birthday = ?, sd_phone = ?, sd_address = ?, sd_email = ?, where no = ?";
+		String sql = "update student set sd_passwd = ?, sd_birthday = ?, sd_phone = ?, sd_address = ?, sd_email = ? where no = ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		boolean studentUpdateSucess = false;

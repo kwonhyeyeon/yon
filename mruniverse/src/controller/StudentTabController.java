@@ -143,7 +143,7 @@ public class StudentTabController implements Initializable {
 			studentTotalList();
 			
 			// 추가된 학과명 호출
-			// addSubjectName();
+			 addSubjectName();
 			
 			// 학생 등록 이벤트 핸들러
 			btnStudentInsert.setOnAction(event -> handlerBtnStudentInsertAction(event));

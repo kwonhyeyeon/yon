@@ -8,7 +8,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.geometry.Insets?>
 
-<HBox prefWidth="700" prefHeight="500" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubjectTabController">
+<HBox prefWidth="700" prefHeight="500"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.SubjectTabController">
 	<padding>
 		<Insets top="10" right="10" bottom="10" left="10" />
 	</padding>
@@ -24,18 +26,19 @@
 			<padding>
 				<Insets top="20" bottom="15" />
 			</padding>
-			
+
 			<children>
 				<Label prefWidth="100" text="학과 번호" />
-				<TextField prefWidth="180" fx:id="txtSubjectNum" promptText="2글자 입력" />
+				<TextField prefWidth="180" fx:id="txtSubjectNum"
+					promptText="2글자 입력" />
 			</children>
 		</HBox>
 
 		<HBox>
 			<padding>
-				<Insets bottom="30"/>
+				<Insets bottom="30" />
 			</padding>
-			
+
 			<children>
 				<Label prefWidth="100" text="학 과 명" />
 				<TextField prefWidth="180" fx:id="txtSubjectName" />
@@ -56,12 +59,13 @@
 	<VBox prefWidth="400">
 		<HBox>
 			<padding>
-				<Insets bottom="20"/>
+				<Insets bottom="20" />
 			</padding>
 			<Label text="학과 목록" />
 		</HBox>
 
-		<TableView fx:id="subjectTableView" prefWidth="300" prefHeight="460" />
+		<TableView fx:id="subjectTableView" prefWidth="300"
+			prefHeight="460" />
 	</VBox>
 
 </HBox>
