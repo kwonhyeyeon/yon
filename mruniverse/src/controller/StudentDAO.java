@@ -474,7 +474,6 @@ public class StudentDAO {
 				sVo.setS_name(rs.getString("s_name"));
 				list.add(sVo);
 			}
-			
 		} catch (SQLException se) {
 			System.out.println(se);
 		} catch (Exception e) {
