@@ -50,7 +50,8 @@ public class SubjectVO {
 
 	@Override
 	public String toString() {
-		return "SubjectVO [no=" + no + ", s_num=" + s_num + ", s_name=" + s_name + "]";
+		// return "SubjectVO [no=" + no + ", s_num=" + s_num + ", s_name=" + s_name + "]";
+		return getS_name();
 	}
 	
 }

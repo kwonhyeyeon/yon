@@ -157,7 +157,7 @@ public class SubjectDAO {
 	// 학과 수정
 	public boolean getSubjectUpdate(int no, String s_num, String s_name) throws Exception {
 		
-		String sql = "update subject set s_num = ?, s_name = ?, where no = ?";
+		String sql = "update subject set s_num = ?, s_name = ? where no = ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		boolean subjectUpdateSucess = false;
