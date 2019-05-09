@@ -32,7 +32,7 @@
 		<children>
 			<Label text="관리자 로그인" fx:id="lblLogin" />
 			<HBox alignment="CENTER">
-				<ImageView pickOnBounds="true" preserveRatio="ture"
+				<ImageView pickOnBounds="true" preserveRatio="true"
 					fx:id="iconImg">
 
 					<image>

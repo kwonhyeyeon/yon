@@ -92,7 +92,11 @@ public class StudentTabController implements Initializable {
 			colStudentNum.setCellValueFactory(new PropertyValueFactory<>("sd_num"));
 
 			TableColumn colStudentName = new TableColumn("이름");
+<<<<<<< HEAD
+			colStudentName.setPrefWidth(80);
+=======
 			colStudentName.setPrefWidth(70);
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 			colStudentName.setStyle("-fx-alignment:CENTER");
 			colStudentName.setCellValueFactory(new PropertyValueFactory<>("sd_name"));
 
@@ -112,12 +116,20 @@ public class StudentTabController implements Initializable {
 			colSubjectNum.setCellValueFactory(new PropertyValueFactory<>("s_num"));
 
 			TableColumn colStudentBirthday = new TableColumn("생년월일");
+<<<<<<< HEAD
+			colStudentBirthday.setPrefWidth(80);
+=======
 			colStudentBirthday.setPrefWidth(70);
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 			colStudentBirthday.setStyle("-fx-alignment:CENTER");
 			colStudentBirthday.setCellValueFactory(new PropertyValueFactory<>("sd_birthday"));
 
 			TableColumn colStudentPhone = new TableColumn("연락처");
+<<<<<<< HEAD
+			colStudentPhone.setPrefWidth(80);
+=======
 			colStudentPhone.setPrefWidth(100);
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 			colStudentPhone.setStyle("-fx-alignment:CENTER");
 			colStudentPhone.setCellValueFactory(new PropertyValueFactory<>("sd_phone"));
 
@@ -127,12 +139,20 @@ public class StudentTabController implements Initializable {
 			colStudentAddress.setCellValueFactory(new PropertyValueFactory<>("sd_address"));
 
 			TableColumn colStudentEmail = new TableColumn("이메일");
+<<<<<<< HEAD
+			colStudentEmail.setPrefWidth(80);
+=======
 			colStudentEmail.setPrefWidth(130);
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 			colStudentEmail.setStyle("-fx-alignment:CENTER");
 			colStudentEmail.setCellValueFactory(new PropertyValueFactory<>("sd_email"));
 
 			TableColumn colStudentDate = new TableColumn("등록일");
+<<<<<<< HEAD
+			colStudentDate.setPrefWidth(80);
+=======
 			colStudentDate.setPrefWidth(100);
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 			colStudentDate.setStyle("-fx-alignment:CENTER");
 			colStudentDate.setCellValueFactory(new PropertyValueFactory<>("sd_date"));
 
@@ -168,6 +188,8 @@ public class StudentTabController implements Initializable {
 
 	}
 
+<<<<<<< HEAD
+=======
 	// 학생 전체 목록
 	public void studentTotalList() throws Exception {
 
@@ -193,6 +215,7 @@ public class StudentTabController implements Initializable {
 
 	}
 
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 	// 학생 전체 목록 메소드
 	public void handlderBtnStudentTotalListAction(ActionEvent event) {
 		try {
@@ -449,7 +472,36 @@ public class StudentTabController implements Initializable {
 			alert.setContentText("다음에는 주의하세요");
 			alert.showAndWait();
 		}
+<<<<<<< HEAD
 
+	}
+
+	// 학생 전체 목록
+	public void studentTotalList() throws Exception {
+
+		studentDataList.removeAll(studentDataList);
+		StudentDAO sDao = new StudentDAO();
+		StudentVO sVo = null;
+		ArrayList<String> title;
+		ArrayList<StudentVO> list;
+
+		title = sDao.getStudentColumnName();
+		int columnCount = title.size();
+
+		list = sDao.getStudentTotalList();
+		int rowCount = list.size();
+
+		for (int index = 0; index < rowCount; index++) {
+			sVo = list.get(index);
+			studentDataList.add(sVo);
+		}
+
+		// 추가된 학과명 호출
+		addSubjectName();
+
+=======
+
+>>>>>>> 09f128a3ad6401413db226549facdf95133595e8
 	}
 
 	// 추가된 학과명 메소드
