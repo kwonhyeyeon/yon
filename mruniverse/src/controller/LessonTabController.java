@@ -45,7 +45,6 @@ public class LessonTabController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		try {
-			System.out.println("aa");
 			// 과목등록 초기화
 			btnLessonUpdate.setDisable(true); // 과목 수정버튼 비활성화
 			btnLessonDelete.setDisable(true); // 과목 삭제버튼 비활성화
@@ -70,11 +69,9 @@ public class LessonTabController implements Initializable {
 			// 과목테이블뷰에 모든 데이터를 추가한다.
 			lessonTableView.getColumns().addAll(colLessonNo, colLessonNum, colLessonName);
 			
-			System.out.println("cc");
 
 			// 과목 전체 목록
 			lessonTotalList();
-			System.out.println("bb");
 			// 과목 등록 텍스트 필드키 이벤트 핸들러
 			txtLessonNum.setOnKeyPressed(event -> handlerTxtLessonNumKeyPressed(event));
 			// 과목 등록, 수정, 삭제 이벤트 등록
@@ -151,7 +148,6 @@ public class LessonTabController implements Initializable {
 
 	// 과목 전체 목록
 	public void lessonTotalList() throws Exception {
-		System.out.println("zz");
 		// 삭제후 반환한다
 		lessonDataList.removeAll(lessonDataList);
 		// LessonDAO객체 인스턴스화

@@ -67,7 +67,6 @@ public class MainController implements Initializable {
 							
 							// 학과 등록 탭 컨트롤러의 subjectTotalList 메소드 호출
 							subjectTabController.subjectTotalList();
-							System.out.println("1");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -75,7 +74,6 @@ public class MainController implements Initializable {
 						try {
 							// 학생 등록 탭 컨트롤러의 studentTotalList 메소드 호출
 							studentTabController.studentTotalList();
-							System.out.println("2");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -83,7 +81,6 @@ public class MainController implements Initializable {
 						try {
 							// 과목 등록 탭 컨트롤러의 lessonTotalList 메소드 호출
 							 lessonTabController.lessonTotalList();
-							 System.out.println("3");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -91,7 +88,6 @@ public class MainController implements Initializable {
 						try {
 							// 수강 신청 목록 탭 컨트롤러의 lessonTotalList 메소드 호출
 							traineeTotalTabController.traineeTotalList();
-							System.out.println("4");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
