@@ -27,7 +27,7 @@
 			
 			<children>
 				<Label prefWidth="100" text="학과 번호" />
-				<TextField prefWidth="180" fx:id="txtSubjectNo" promptText="2글자 입력" />
+				<TextField prefWidth="180" fx:id="txtSubjectNum" promptText="2글자 입력" />
 			</children>
 		</HBox>
 
