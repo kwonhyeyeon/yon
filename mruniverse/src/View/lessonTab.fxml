@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TableView?>
 
 <HBox prefWidth="750" prefHeight="450"
-	xmlns:fx="http://javafx.com/fxml/1">
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LessonTabController">
 	<!-- TODO Add Nodes -->
 	<VBox>
 		<padding>

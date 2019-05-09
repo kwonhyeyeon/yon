@@ -68,7 +68,7 @@ public class LessonDAO {
 	// 과목 등록
 	public void getLessonRegiste(LessonVO lvo) throws Exception {
 		// 과목을 등록하는 sql문
-		String sql = "insert into lesson * values (lesson_seq.nextval, ?, ?)";
+		String sql = "insert into lesson " + "values (lesson_seq.nextval, ?, ?)";
 
 		Connection con = null;
 		PreparedStatement pstmt = null;

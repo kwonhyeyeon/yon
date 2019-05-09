@@ -210,7 +210,6 @@ public class LessonTabController implements Initializable {
 		try {
 			// DataList를 삭제후 반환한다.
 			lessonDataList.removeAll(lessonDataList);
-
 			// 객체 인스턴스선언
 			LessonVO lvo = null;
 			LessonDAO ldao = null;
@@ -226,7 +225,7 @@ public class LessonTabController implements Initializable {
 
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("과목 입력");
-				alert.setHeaderText("txtSubjectName.getText()" + "과목이 성공적으로 추가되었습니다");
+				alert.setHeaderText(txtLessonName.getText() + "과목이 성공적으로 추가되었습니다");
 				alert.setContentText("수고링~");
 				alert.showAndWait();
 				// 과목번호, 과목명을 지워준다
