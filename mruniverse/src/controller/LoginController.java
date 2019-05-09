@@ -101,7 +101,6 @@ public class LoginController implements Initializable {
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mainView.fxml"));
 						// 부모창을 login.fxml로 로드
 						Parent mView = (Parent) loader.load();
-						System.out.println(mView);
 						// Scene 객체 생성
 						Scene scane = new Scene(mView);
 						// Stage 객체 생성

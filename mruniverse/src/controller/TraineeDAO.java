@@ -170,13 +170,13 @@ public class TraineeDAO {
 
 	// 로그인한 학생 수강 신청 전체 목록(학번으로 검색)
 	public ArrayList<TraineeVO> getTraineeTotalList(String sd_num) throws Exception {
+		
 		// ArrayList배열 생성(TraineeVO 타입)
 		ArrayList<TraineeVO> list = new ArrayList<>();
-
+		
 		// 학생번호로 검색하여 일련번호, 학생번호, 과목명, 과목분류, 등록일을 가져오는 sql문
 		String sql = "select tr.no as no, sd_num, le.l_name as l_num, t_section, t_date "
 				+ "from trainee tr, lesson le where tr.l_num = le.l_num and " + "tr.sd_num = ? order by t_date";
-
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -342,7 +342,7 @@ public class TraineeDAO {
 		// ArrayList 배열 생성
 		ArrayList<TraineeVO> list = new ArrayList<>();
 		// 3개의 테이블에서 정보를 가져오는 SQL문
-		String sql = "select tr.no as no, tr.sd_num as l_num, st.sd_name as sd_name, t_section, t_date "
+		String sql = "select tr.no as no, tr.sd_num, le.l_name as l_num, st.sd_name as sd_name, t_section, t_date "
 				+ "from trainee tr, lesson le, student st "
 				+ "where tr.l_num = le.l_num and tr.sd_num = st.sd_num order by t_date";
 
@@ -351,7 +351,6 @@ public class TraineeDAO {
 		ResultSet rs = null;
 		// 인스턴스 선언
 		TraineeVO tVo = null;
-
 		try {
 			// DB연동
 			con = DBUtil.getConnection();
@@ -359,7 +358,7 @@ public class TraineeDAO {
 			pstmt = con.prepareStatement(sql);
 			// sql문을 날리고 결과를 저장한다.
 			rs = pstmt.executeQuery();
-
+			
 			while (rs.next()) {
 				// 인스턴스 생성
 				tVo = new TraineeVO();
@@ -368,7 +367,7 @@ public class TraineeDAO {
 				tVo.setSd_num(rs.getString("sd_num"));
 				tVo.setSd_name(rs.getString("sd_name"));
 				tVo.setL_num(rs.getString("l_num"));
-				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_section(rs.getString("t_section"));
 				tVo.setT_date(rs.getString("t_date"));
 
 				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
@@ -400,9 +399,8 @@ public class TraineeDAO {
 		// ArrayList배열 생성
 		ArrayList<TraineeVO> list = new ArrayList<>();
 		// 학번으로 3개의 테이블에서 데이터를 가져오는 sql문
-		String sql = "select tr.no as no, tr.sd_num, le.l_name as l_num, st.sd_name as sd_name, t_section, "
-				+ "t_date from trainee tr, lesson le, student st where tr.l_num = le.l_num and tr.sd_num = "
-				+ "st.sd_num and tr.sd_num = ? order by t_date";
+		String sql = "select tr.no as no, tr.sd_num, le.l_name as l_num, st.sd_name as sd_name, t_section, t_date "
+				+ "from trainee tr, lesson le, student st " + "where tr.l_num = le.l_num and tr.sd_num = st.sd_num and tr.sd_num = ? order by t_date";
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -428,7 +426,7 @@ public class TraineeDAO {
 				tVo.setSd_num(rs.getString("sd_num"));
 				tVo.setSd_name(rs.getString("sd_name"));
 				tVo.setL_num(rs.getString("l_num"));
-				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_section(rs.getString("t_section"));
 				tVo.setT_date(rs.getString("t_date"));
 
 				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
@@ -489,7 +487,7 @@ public class TraineeDAO {
 				tVo.setSd_num(rs.getString("sd_num"));
 				tVo.setSd_name(rs.getString("sd_name"));
 				tVo.setL_num(rs.getString("l_num"));
-				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_section(rs.getString("t_section"));
 				tVo.setT_date(rs.getString("t_date"));
 
 				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다
@@ -548,7 +546,7 @@ public class TraineeDAO {
 				tVo.setSd_num(rs.getString("sd_num"));
 				tVo.setSd_name(rs.getString("sd_name"));
 				tVo.setL_num(rs.getString("l_num"));
-				tVo.setT_section(rs.getString("t_scetion"));
+				tVo.setT_section(rs.getString("t_section"));
 				tVo.setT_date(rs.getString("t_date"));
 
 				// 필드값을 설정해준후 ArrayList배열에 객체를 추가한다

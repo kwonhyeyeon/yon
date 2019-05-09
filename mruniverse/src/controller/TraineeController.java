@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -146,6 +147,9 @@ public class TraineeController implements Initializable {
 				rbMajor.setOnAction(event -> handlerRbMajorAction(event));
 				rbMinor.setOnAction(event -> handlerRbMinorAction(event));
 				rbCulture.setOnAction(event -> handlerRbCultureAction(event));
+				
+				// 학생 등록 탭의 학과 선택 이벤트 핸들러
+				cbx_subjectName.setOnAction(event -> handlerCbx_SubjectName(event));
 
 				// 수강 등록, 취소 버튼 이벤트 등록
 				btnTraineeInsert.setOnAction(event -> handlerBtnTraineeInsertAction(event));
@@ -160,11 +164,19 @@ public class TraineeController implements Initializable {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
 	
+	// 학생 등록 탭의 학과 선택 이벤트 메소드
+	public void handlerCbx_SubjectName(ActionEvent event) {
+		
+		txtSectionName.setText(cbx_subjectName.getSelectionModel().getSelectedItem());
+		selectLessonNameToLessonNum();
+		
+	}
+
 	// 수강 전체 리스트
 	public void traineeTotalList() throws Exception {
 		

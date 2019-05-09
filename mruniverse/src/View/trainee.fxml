@@ -104,7 +104,7 @@
 										<Insets bottom="30"/>
 									</padding>
 									<spacing>10</spacing>
-									<ComboBox  prefWidth="90" fx:id="cbx_subjectName" promptText="선택"/>
+									<ComboBox  prefWidth="120" fx:id="cbx_subjectName" promptText="선택"/>
 									<TextField fx:id="txtSectionName" promptText="수강 과목 선택"/>
 								</HBox>
 								
