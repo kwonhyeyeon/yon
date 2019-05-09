@@ -212,7 +212,7 @@ public class TraineeTotalTabController implements Initializable {
 		list = tDao.getTraineeTotalList();		
 		int rowCount = list.size();
 		
-        lblCount.setText("수강 신청/t/t/t총원 : " + rowCount + " 명");
+        lblCount.setText("수강 신청 \t\t\t총원 : " + rowCount + " 명");
 		for(int index = 0; index < rowCount; index++) {
 			tVo = list.get(index);
 			traineeDataList.add(tVo);

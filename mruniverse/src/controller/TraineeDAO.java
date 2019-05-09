@@ -95,7 +95,6 @@ public class TraineeDAO {
 				alert.setContentText("수고링~");
 				alert.showAndWait();
 			}
-
 		} catch (SQLException se) {
 			System.out.println(se);
 		} catch (Exception e) {

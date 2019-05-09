@@ -390,7 +390,6 @@ public class StudentTabController implements Initializable {
 
 		try {
 			selectSubjectNum = sudao.getSubjectNum(cbx_subjectName.getSelectionModel().getSelectedItem() + "");
-
 			// 학번은 8자리로 구성(연도2 + 학과2 + 일련4 ex.06010001)
 			SimpleDateFormat sdf = new SimpleDateFormat("yy");
 			sdYear = sdf.format(new Date());

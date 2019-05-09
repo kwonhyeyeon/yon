@@ -64,7 +64,6 @@ public class MainController implements Initializable {
 					if (newValue == subject) { // 학과 등록 탭일 경우
 
 						try {
-							
 							// 학과 등록 탭 컨트롤러의 subjectTotalList 메소드 호출
 							subjectTabController.subjectTotalList();
 						} catch (Exception e) {
