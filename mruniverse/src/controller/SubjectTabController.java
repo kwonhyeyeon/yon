@@ -55,7 +55,7 @@ public class SubjectTabController implements Initializable {
 		
 		try {
 			
-			lblManagerName.setText("학과 등록 관리자명 : " + LoginController.managerName);
+			lblManagerName.setText("학과 등록\t\t\t관리자명 : " + LoginController.managerName);
 			
 			// 학과 등록 초기화
 			btnUpdate.setDisable(true); // 수정 버튼 비활성화
@@ -74,7 +74,7 @@ public class SubjectTabController implements Initializable {
 			colSNum.setCellValueFactory(new PropertyValueFactory<>("s_num"));
 			
 			TableColumn colSName = new TableColumn("학 과 명");
-			colSName.setPrefWidth(50); // 컬럼 넓이 설정
+			colSName.setPrefWidth(200); // 컬럼 넓이 설정
 			colSName.setStyle("-fx-alignment:CENTER");
 			colSName.setCellValueFactory(new PropertyValueFactory<>("s_name"));
 			

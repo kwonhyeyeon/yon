@@ -118,7 +118,7 @@ public class StudentDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			if (rs.next()) { // 쿼리가 실행 후
+			while (rs.next()) { // 쿼리가 실행 후
 				sVo = new StudentVO(); // StudentVO 객체 생성
 				// 해당 테이블 컬럼에서 값을 받아 sVo객체에 설정
 				sVo.setNo(rs.getInt("no"));
