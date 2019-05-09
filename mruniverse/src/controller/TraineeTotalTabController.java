@@ -39,7 +39,9 @@ public class TraineeTotalTabController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		try {
-
+			
+			cbx_searchList.setItems(FXCollections.observableArrayList("학번", "과목명","학생이름"));
+			
 			// 수강 테이블 뷰 컬럼이름 설정
 			TableColumn colNo = new TableColumn("NO");
 			colNo.setPrefWidth(50);
@@ -73,13 +75,10 @@ public class TraineeTotalTabController implements Initializable {
 
 			traineeTotalTableView.setItems(traineeDataList);
 			traineeTotalTableView.getColumns().addAll(colNo, colSdNum, colSdName, colLNum, colTSection, colTDate);
-
 			// 수강 전체 목록
 			traineeTotalList();
-
 			// 검색 버튼 이벤트 핸들러
 			btnSearch.setOnAction(event -> handlerBtnSearchAction(event));
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -124,10 +123,9 @@ public class TraineeTotalTabController implements Initializable {
 
 				title = tDao.getTraineeColumnName();
 				int columnCount = title.size();
-
+				
 				if (search.equals("학번")) { // 콤보박스에서 학번을 선택했을 때
 					list = tDao.getTraineeStudentNumSearchList(searchName);
-
 					if (list.size() == 0) { // 값이 없을 때
 						txtSearchWord.clear(); // 검색어 필드 초기화
 
@@ -203,6 +201,7 @@ public class TraineeTotalTabController implements Initializable {
 		
 		TraineeDAO tDao = new TraineeDAO();
 		TraineeVO tVo = null;
+		
 		ArrayList<String> title;
 		ArrayList<TraineeVO> list;
 		
@@ -212,14 +211,12 @@ public class TraineeTotalTabController implements Initializable {
 		list = tDao.getTraineeTotalList();		
 		int rowCount = list.size();
 		
-        lblCount.setText("수강 신청/t/t/t총원 : " + rowCount + " 명");
+        lblCount.setText("수강 신청\t\t\t총원 : " + rowCount + " 명");
 		for(int index = 0; index < rowCount; index++) {
 			tVo = list.get(index);
 			traineeDataList.add(tVo);
 			
 		}
-		
-
 	}
 
 }

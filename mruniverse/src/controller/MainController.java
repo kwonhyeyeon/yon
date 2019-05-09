@@ -116,7 +116,6 @@ public class MainController implements Initializable {
 		alert.setContentText("Future Univ. Register Courses Version 0.01"); // 컨텐트 텍스트 설정
 		alert.setResizable(false); // 리사이즈 불가
 		alert.showAndWait(); // 사용자 응답 기다림
-		Platform.exit(); // 플랫폼 종료
 		
 	}
 
