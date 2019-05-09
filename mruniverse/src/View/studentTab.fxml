@@ -22,7 +22,7 @@
 			<padding>
 				<Insets top="20" bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="학과명"/>
+			<Label prefWidth="60" text="학과명"/>
 			<ComboBox fx:id="cbx_subjectName" promptText="선택"/>
 		</HBox>
 		
@@ -30,7 +30,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="학 번"/>
+			<Label prefWidth="60" text="학 번"/>
 			<TextField fx:id="txtsd_num"/>
 		</HBox>
 		
@@ -38,7 +38,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="이 름"/>
+			<Label prefWidth="60" text="이 름"/>
 			<TextField fx:id="txtsd_name"/>
 		</HBox>
 		
@@ -46,7 +46,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="70" text="아이디"/>
+			<Label prefWidth="50" text="아이디"/>
 			<TextField fx:id="txtsd_id"/>
 			<spacing>10</spacing>
 			<Button fx:id="btnIdCheck" text="ID 체크"/>
@@ -56,7 +56,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="비밀번호"/>
+			<Label prefWidth="60" text="비밀번호"/>
 			<PasswordField fx:id="txtsd_passwd"/>
 		</HBox>
 		
@@ -64,7 +64,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="생년월일"/>
+			<Label prefWidth="60" text="생년월일"/>
 			<TextField fx:id="txtsd_birthday" promptText="20010101"/>
 		</HBox>
 		
@@ -72,7 +72,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="연락처"/>
+			<Label prefWidth="60" text="연락처"/>
 			<TextField fx:id="txtsd_phone" promptText="01012345678"/>
 		</HBox>
 		
@@ -80,7 +80,7 @@
 			<padding>
 				<Insets bottom="10"/>
 			</padding>
-			<Label prefWidth="80" text="주 소"/>
+			<Label prefWidth="60" text="주 소"/>
 			<TextField fx:id="txtsd_address"/>
 		</HBox>
 		
@@ -88,7 +88,7 @@
 			<padding>
 				<Insets bottom="20"/>
 			</padding>
-			<Label prefWidth="80" text="이메일"/>
+			<Label prefWidth="60" text="이메일"/>
 			<TextField fx:id="txtsd_email"/>
 		</HBox>
 		
@@ -106,11 +106,11 @@
 				<Insets bottom="10"/>
 			</padding>
 			<spacing>10</spacing>
-			<Label text="학생 목록"/>
+			<Label prefHeight="19" text="학생 목록"/>
 			<Button fx:id="btnStudentTotalList" text="학생 전체"/>
 		</HBox>
 		
-		<TableView fx:id="studentTableView" prefWidth="700" prefHeight="460"></TableView>
+		<TableView fx:id="studentTableView" prefWidth="720" prefHeight="460"></TableView>
 		
 	</VBox>
 	

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.geometry.Insets?>
 
-<HBox prefWidth="700" prefHeight="500"
+<HBox prefWidth="1000" prefHeight="500"
 	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="controller.SubjectTabController">
 	<padding>
@@ -56,7 +56,7 @@
 		</HBox>
 	</VBox>
 
-	<VBox prefWidth="400">
+	<VBox prefWidth="700">
 		<HBox>
 			<padding>
 				<Insets bottom="20" />
@@ -64,7 +64,7 @@
 			<Label text="학과 목록" />
 		</HBox>
 
-		<TableView fx:id="subjectTableView" prefWidth="300"
+		<TableView fx:id="subjectTableView" prefWidth="700"
 			prefHeight="460" />
 	</VBox>
 
